@@ -18,8 +18,6 @@ $ npm test
                                                                                                                 latyest
 ## Transpiling and running
 
-Через менеджер пакетов **npm**, с аргументами по умолчанию:
-
 ```console
 $ npm start
 ```
