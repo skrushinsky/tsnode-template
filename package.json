@@ -5,11 +5,12 @@
   "scripts": {
     "start": "npm run build && node dist/app.js",
     "start:dev": "nodemon",
-    "build": "rimraf ./dist && tsc",
+    "build": "rimraf ./dist && tsc --project tsconfig.build.json",
     "lint": "eslint . --ext .ts",
-    "lint-and-fix": "eslint . --ext .ts --fix",
+    "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --config .prettierrc src/**/*.ts test/**/*.ts --write",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "mocha -r ts-node/register --project tsconfig.build.json test/**/*.spec.ts",
+    "test:coverage": "nyc npm run test"
   },
   "keywords": [],
   "author": "Sergey Krushinsky",
@@ -21,6 +22,7 @@
     }
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "^4.3.3",
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.6",
@@ -31,6 +33,7 @@
     "husky": "^8.0.1",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
